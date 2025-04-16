@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://chathaven-zvsp.onrender.com",
+    origin: "https://chathaven-gold.vercel.app",
     credentials: true,
   })
 );
