@@ -18,6 +18,7 @@ import CallModal from "./components/CallModal";
 import CallOverlay from "./components/CallOverlay";
 import { useCallStore } from "./store/useCallStore";
 
+import Register from "./register";
 
 
 const App = () => {
@@ -47,7 +48,7 @@ const App = () => {
         <Loader className="size-10 animate-spin" />
       </div>
     );
-  
+
   return (
     <div data-theme={theme}>
       <Navbar />
@@ -68,6 +69,7 @@ const App = () => {
 )}
 
       <Routes>
+      <Register onSuccess={(username) => console.log("Registered as", username)} />
         <Route path="/" element={authUser ? <HomePage /> : <Navigate to="/login" />} />
         <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/" />} />
         <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/" />} />
