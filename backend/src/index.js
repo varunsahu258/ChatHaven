@@ -35,7 +35,9 @@ const io = new Server(server, {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
-
+io.on("connection", (socket) => {
+  console.log("User connected:", socket.id);
+});
 server.listen(PORT, () => {
   console.log("server is running on PORT:" + PORT);
   connectDB();
