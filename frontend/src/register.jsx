@@ -1,7 +1,7 @@
 // src/Register.jsx
 import React, { useState } from "react";
 import axios from "axios";
-import { axiosInstance } from "./utils/axiosInstance"
+import { axiosInstance } from "../lib/axios.js";
 const Register = ({ onSuccess }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
