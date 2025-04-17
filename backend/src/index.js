@@ -18,14 +18,19 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "https://chathaven-gold.vercel.app",
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+app.use(cors({
+  origin: ["https://chathaven-gold.vercel.app"],
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 
-  })
-);
+const io = new Server(server, {
+  cors: {
+    origin: ["https://chathaven-gold.vercel.app"],  
+    methods: ["GET", "POST"],
+    credentials: true 
+  }
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
