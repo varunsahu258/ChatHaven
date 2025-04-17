@@ -7,21 +7,25 @@ const Register = ({ onSuccess }) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const handleRegister = async () => {
     try {
-      const res = await axios.post("https://chathaven-zvsp.onrender.com", {
+      const res = await axios.post(`${BASE_URL}/register`, {
         username,
         password,
       });
-
+  
+      // Handle success (e.g., save token, navigate, etc.)
+      console.log("User registered:", res.data);
+    } catch (err) {
+      console.error("Registration error:", err.response?.data || err.message);
+    }
+  };
+ssssss  
       // Store token if needed
       localStorage.setItem("token", res.data.token);
       onSuccess && onSuccess(username); // optional callback
-
-    } catch (err) {
-      setError(err.response?.data?.message || "Registration failed");
-    }
-  };
 
   return (
     <div className="flex flex-col gap-4 max-w-sm mx-auto mt-20 p-6 bg-white rounded-xl shadow-md">
